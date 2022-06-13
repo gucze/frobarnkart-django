@@ -19,8 +19,10 @@ def add_cart(request, product_id):
     if current_user.is_authenticated:
         product_variation=[]
         if request.method == 'POST':
-            for key, value in request.POST.items():
-                # print(key, value)
+            # for key, value in request.POST.items():
+            for item in request.POST:
+                key = item
+                value = request.POST[key]
                 try:
                     variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
                     # print("line 25. variation is--->", variation)
@@ -73,7 +75,10 @@ def add_cart(request, product_id):
     else:
         product_variation=[]
         if request.method == 'POST':
-            for key, value in request.POST.items():
+            # for key, value in request.POST.items():
+            for item in request.POST:
+                key = item
+                value = request.POST[key]
                 try:
                     variation = Variation.objects.get(product=product, variation_category__iexact=key, variation_value__iexact=value)
                     product_variation.append(variation)
