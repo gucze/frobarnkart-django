@@ -49,7 +49,7 @@ ul.thumb{
   padding: 0;
   float: left;
 }
-ul.thumb li{
+ul.thumb.li{
   list-style: none;
   margin: 10px;
 }
